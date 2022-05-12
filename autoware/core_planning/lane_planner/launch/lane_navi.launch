@@ -1,0 +1,17 @@
+<!-- -->
+<launch>
+  <arg name="velocity" default="40" />
+  <arg name="output_file" default="/tmp/lane_waypoint.csv" />
+
+
+<!-- 加载一条全局路径 -->
+  <node pkg="lane_planner" type="lane_navi" name="lane_navi" output="screen">
+      <param name="velocity" value="$(arg velocity)" />
+      <param name="output_file" value="$(arg output_file)" />
+  </node>
+  
+  <!-- 把加载的路径进行可视化 -->
+  <node pkg="waypoint_maker" type="waypoint_marker_publisher" name="waypoint_marker_publisher"/>
+
+
+</launch>
